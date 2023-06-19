@@ -5,8 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { CursosComponent } from './cursos/cursos/cursos.component';
 import { CursosModule } from './cursos/cursos.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -17,8 +17,8 @@ import { CursosModule } from './cursos/cursos.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    CursosModule,
-    MatToolbarModule
+    MatToolbarModule,
+    HttpClientModule
 
   ],
   providers: [],
