@@ -23,4 +23,11 @@ export class CursoFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onSubmit() {
+
+  }
+
+  onCancel() {
+
+  }
 }
