@@ -28,8 +28,8 @@ export class CursosComponent implements OnInit {
         return of([]);
       })
     )
-   }
-   onError(errorMsg: string) {
+  }
+  onError(errorMsg: string) {
     this.dialog.open(ErrorDialogComponent, {
       data: errorMsg
     });

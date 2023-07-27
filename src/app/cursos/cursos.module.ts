@@ -10,11 +10,6 @@ import { CursoFormComponent } from './curso-form/curso-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
-
-
-
-
-
 @NgModule({
   declarations: [
     CursosComponent,
