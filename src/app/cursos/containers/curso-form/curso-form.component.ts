@@ -2,8 +2,10 @@ import { Location } from '@angular/common';
 
 import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder} from '@angular/forms';
-import { CursosService } from '../services/cursos.service';
+
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CursosService } from '../../services/cursos.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -23,11 +25,14 @@ export class CursoFormComponent implements OnInit {
   constructor(private formBuilder: NonNullableFormBuilder,
     private service: CursosService,
     private snacBar: MatSnackBar,
-    private Location: Location) {
+    private Location: Location,
+    private route: ActivatedRoute) {
 
   }
 
   ngOnInit(): void {
+    const curso: Curso = this.route.snapshot.data['curso'];
+
 
   }
 
