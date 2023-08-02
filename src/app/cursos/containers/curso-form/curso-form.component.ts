@@ -1,11 +1,12 @@
 import { Location } from '@angular/common';
 
 import { Component, OnInit } from '@angular/core';
-import { NonNullableFormBuilder} from '@angular/forms';
+import { NonNullableFormBuilder, Validators} from '@angular/forms';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CursosService } from '../../services/cursos.service';
 import { ActivatedRoute } from '@angular/router';
+import { Curso } from '../../model/curso';
 
 
 
@@ -17,8 +18,11 @@ import { ActivatedRoute } from '@angular/router';
 export class CursoFormComponent implements OnInit {
 
   form = this.formBuilder.group({
-    nome: [''],
-    categoria: ['']
+    _id:[''],
+    nome: ['',[Validators.required,
+      Validators.minLength(5),
+      Validators.maxLength(100)]],
+    categoria: ['', [Validators.required]]
   });
 
 
@@ -32,6 +36,11 @@ export class CursoFormComponent implements OnInit {
 
   ngOnInit(): void {
     const curso: Curso = this.route.snapshot.data['curso'];
+    this.form.setValue({
+      nome: curso.nome,
+      categoria: curso.categoria,
+      _id: curso._id
+    });
 
 
   }
@@ -52,5 +61,25 @@ export class CursoFormComponent implements OnInit {
 
   private onError(){
     this.snacBar.open('Erro ao salvar curso.', '', { duration: 5000 });
+  }
+
+  public getErrorMessage(fieldName: string) {
+    const field = this.form.get(fieldName);
+
+    if (field?.hasError('required')) {
+      return 'Campo obrigatório';
+    }
+
+    if (field?.hasError('minlength')) {
+      const requiredLength = field.errors ? field.errors['minlength']['requiredLength'] : 5;
+      return 'Tamanho minimo precisa ser de ${requiredLength} caracteres';
+    }
+
+    if (field?.hasError('maxlength')) {
+      const requiredLength = field.errors ? field.errors['maxlength']['requiredLength'] : 200;
+      return 'Tamanho maximo excedido de ${requiredLength} caracteres';
+    }
+
+    return 'Campo Inválido';
   }
 }
