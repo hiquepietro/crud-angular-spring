@@ -14,26 +14,22 @@
     </mat-cell>
   </ng-container>
 
-  <!-- Platform Column -->
-  <ng-container matColumnDef="plataforma">
-    <mat-header-cell *matHeaderCellDef>Plataforma de Curso</mat-header-cell>
-    <mat-cell  *matCellDef="let curso" class="platform-cell">{{ curso.plataforma }}</mat-cell>
-  </ng-container>
+
 
   <!-- Actions Column -->
   <ng-container matColumnDef="acoes">
-    <mat-header-cell *matHeaderCellDef  class="action-column">
-      <button (click)="onAdd()" mat-mini-fab color="accent" aria-label="Adicionar um curso">
+    <mat-header-cell *matHeaderCellDef  class="acao-coluna">
+      <button  mat-mini-fab color="accent" aria-label="Adicionar um curso" (click)="onAdd()" class="acao-corpo">
         <mat-icon>add</mat-icon>
       </button>
     </mat-header-cell>
 
-    <mat-cell *matCellDef="let curso" class="action-column">
-      <button (click)="onEdit(curso) mat-icon-button color="primary" aria-label="Editar curso">
+    <mat-cell *matCellDef="let curso" class="acao-coluna">
+      <button mat-icon-button color="primary" aria-label="Editar curso" (click)="onEdit(curso)">
         <mat-icon>edit</mat-icon>
       </button>
 
-      <button (click)="onDelet(curso) mat-icon-button color="warn" aria-label="Remover curso">
+      <button mat-icon-button color="warn" aria-label="Remover curso" (click)="onDelete(curso)">
         <mat-icon>delete</mat-icon>
       </button>
     </mat-cell>

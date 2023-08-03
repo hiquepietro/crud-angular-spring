@@ -24,6 +24,7 @@ export class CursoFormComponent implements OnInit {
       Validators.maxLength(100)]],
     categoria: ['', [Validators.required]]
   });
+nome: any;
 
 
   constructor(private formBuilder: NonNullableFormBuilder,

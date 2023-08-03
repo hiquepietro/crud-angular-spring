@@ -12,13 +12,13 @@ import { Curso } from '../../model/curso';
 import { ConfirmacaoDialogComponent } from 'src/app/shared/components/confirmacao-dialog/confirmacao-dialog.component';
 
 @Component({
-  selector: 'app-courses',
+  selector: 'app-cursos',
   templateUrl: './cursos.component.html',
   styleUrls: ['./cursos.component.scss']
 })
-export class CoursesComponent implements OnInit {
+export class CursosComponent implements OnInit {
 
-  courses$: Observable<Curso[]> | null = null;
+  cursos$: Observable<Curso[]> | null = null;
 
   constructor(
     private cursosService: CursosService,
@@ -31,7 +31,7 @@ export class CoursesComponent implements OnInit {
   }
 
   refresh() {
-    this.courses$ = this.cursosService.list()
+    this.cursos$ = this.cursosService.list()
       .pipe(
         catchError(error => {
           this.onError('Erro ao carregar cursos.');
@@ -49,7 +49,7 @@ export class CoursesComponent implements OnInit {
   ngOnInit(): void { }
 
   onAdd() {
-    this.router.navigate(['new'], { relativeTo: this.route });
+    this.router.navigate(['novo'], { relativeTo: this.route });
   }
 
   onEdit(curso: Curso) {
